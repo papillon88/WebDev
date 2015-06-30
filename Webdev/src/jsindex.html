@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<title>java script</title>
+<meta charset="utf-8" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style type="text/css">
+#fourthdiv{
+height: 100px;
+width: 100px;
+background-color: red;
+border-radius: 200px;
+}
+</style>
+
+
+</head>
+
+
+<body>
+
+<button id="change">change first div</button>
+<button id="append">append text to second div</button>
+<button id="create">create third div</button>
+
+
+<div id="firstdiv">first div</div>
+<div id="seconddiv">second div</div>
+<div id="thirddiv">third div</div>
+<div id="fourthdiv"></div>
+<div id="fifthdiv">Fifth div</div>
+
+<input id="input" type="text" value="temp text" />
+<button id="change fifth div">input</button>
+
+<!-- <p id="text">Some text !</p> -->
+
+<script type="text/javascript">
+
+//alert('page loaded')
+//alert(document.getElementById("text").innerHTML);
+//document.getElementById("text").innerHTML="changing contents";
+//alert(document.getElementById("text").innerHTML);
+document.getElementById("change").onclick=function(){
+	document.getElementById("firstdiv").innerHTML="first div changed";
+}
+document.getElementById("append").onclick=function(){
+	document.getElementById("seconddiv").innerHTML+="..is now appended";
+}
+document.getElementById("create").onclick=function(){
+	document.getElementById("thirddiv").innerHTML="<ul><li>Cat</li><li>tiger</li><li>lion</li><li>hyena</li></ul>";
+}
+var fourth="fourthdiv"
+document.getElementById(fourth).onclick=function(){
+	document.getElementById(fourth).style.display="none";
+}
+var myArray=new Array();
+myArray[0]="pizza";
+myArray[1]="chocolate";
+console.log(myArray);
+
+anotherArray=["rain","sun"];
+anotherArray.push("snow");
+console.log(anotherArray);
+anotherArray.splice(1,1);
+console.log(anotherArray);
+anotherArray.splice(1,0,"hail","cloudy");
+console.log(anotherArray);
+console.log(anotherArray.length);
+
+document.getElementById("change fifth div").onclick=function(){
+	var fifth=document.getElementById("input").value;
+	document.getElementById("fifthdiv").innerHTML=fifth+ myArray[0]+ myArray[1];
+	if (true)
+		alert("this statement is always true");
+	
+}
+
+var x=1;
+if (x==1){
+	alert("x is 1");
+}
+else{
+	alert("x is not 1");
+}
+
+// single line comments go here
+/*
+ * multiline comments go here
+ */
+</script>
+
+</body>
+
+
+</html>
