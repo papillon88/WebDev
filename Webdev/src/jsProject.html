@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Box Jumping</title>
+<style type="text/css">
+
+body{
+font-family: Gill Sans Extrabold, sans-serif;
+}
+
+
+#box{
+position: absolute;
+top: 60%;
+left: 10%;
+width: 50px;
+height: 50px;
+background-color: blue;
+display: none;
+border-radius: 0%;
+}
+
+#bold{
+font-weight: bold;
+}
+
+
+</style>
+</head>
+<body>
+
+<h1>See how fast your impulses are !</h1>
+<p>Various shapes appear at different time intervals throughout the game. All you need to do is click on each shape
+as quickly as possible to make it disappear. This will give your reaction time. Happy Clickin !</p>
+
+<div id="box"></div>
+<p id="bold">Reaction Time: <span id="score"></span></p>
+
+<script type="text/javascript">
+
+var created,clicked;
+
+var time=Math.ceil(5000*Math.random());
+setTimeout(function(){
+	document.getElementById("box").style.display="block";
+	created=Date.now();
+},time);
+
+function makeBox(){
+	var time=Math.ceil(500*Math.random());
+	setTimeout(function(){
+		document.getElementById("box").style.top=(45+20*Math.random())+'%';
+		document.getElementById("box").style.left=(10+90*Math.random())+'%';
+		document.getElementById("box").style.borderRadius=(60*Math.random())+'%';
+		document.getElementById("box").style.display="block";
+		document.getElementById("box").style.backgroundColor='#'+Math.random().toString(16).substr(2,6);
+		 created=Date.now();
+	},time);
+}
+
+
+document.getElementById("box").onclick=function(){
+	clicked=Date.now();
+	this.style.display="none";
+	document.getElementById("score").innerHTML+=" "+ (clicked-created)+"ms";
+	//alert("reaction is: "+(clicked-created));
+	makeBox();
+}
+
+
+
+</script>
+
+</body>
+</html>
