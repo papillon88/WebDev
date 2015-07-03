@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<title>java script</title>
+<meta charset="utf-8" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<script type="text/javascript" src="jquery.min.js"></script>
+
+<style type="text/css">
+
+.square{
+height: 100px;
+width: 100px;
+background-color: red;
+margin-bottom: 10px;
+}
+#circle{
+height: 100px;
+width: 100px;
+background-color: green;
+border-radius: 50%;
+}
+
+</style>
+
+
+</head>
+
+
+<body>
+
+<div class="square"></div>
+<div class="square"></div>
+<div id="circle"></div>
+
+<p id="para">here goes some temporary text</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FKTxC9pl-WM" frameborder="0" allowfullscreen></iframe>
+
+
+<script>
+
+/* if(typeof jQuery !="undefined"){
+	
+	alert("jquery is installed");
+}
+else{
+	alert("jquery is not installed");
+} */
+
+//VERY VERY IMPORTANT SYNTAX RULES OF JQUERY
+
+$("#circle").click(function(){
+	
+	alert("circle clicked");
+	$("#para").html("text has been changed");
+	$(".square").fadeOut();
+});
+
+
+$(".square").click(function(){
+	
+	$(this).fadeOut();
+	$(this).hide();
+	alert("square clicked");
+	alert($(".square").css("height"));
+	$(".square").css("width","400px");
+	$(".square").css("display","none");
+});
+
+/* $(".square").hover(function(){
+	alert("hovering now");
+	$("iframe").attr("src","http://www.google.com");
+	alert($("iframe").attr("src"));
+}); */
+
+</script>
+
+</body>
+
+
+</html>

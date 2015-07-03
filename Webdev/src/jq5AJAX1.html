@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<title>java script</title>
+<meta charset="utf-8" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<script type="text/javascript" src="jquery.min.js">
+	
+</script>
+
+
+</head>
+<body>
+
+<h1>AJAX</h1>
+
+<script type="text/javascript">
+
+$.get("test.html",function(data){
+
+	alert(data);
+});
+
+$.ajax({
+	url:"test.html"
+}).done(function(data){
+	alert(data);
+	$("h1").append(data);
+	$("h1").html(data);
+});
+
+</script>
+
+
+
+</body>
+</html>
