@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Project</title>
+<script type="text/javascript" src="jquery.min.js"></script>
+
+<style type="text/css">
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
+		"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: bold;
+}
+
+#menu1 {
+	width: 100%;
+	height: 44px;
+	background-color: #e0e0e0;
+	border-bottom: 1px solid grey;
+}
+
+#codeplayer {
+	padding: 10px 0 0 20px;
+	font-size: 120%;
+	font-weight: bold;
+	float: left;
+}
+
+#buttondiv {
+	float: right;
+	padding: 7px 10px 0 0;
+}
+
+#button {
+	font-size: 90%;
+}
+
+#menu2 {
+	width: 199px;
+	margin: 0 auto;
+	list-style: none;
+	font-weight: normal;
+	border: 1px solid grey;
+	height: 25px;
+	padding: 0 0 3px 0;
+	position: relative;
+	top: 10px;
+	border-radius: 4px;
+	position: relative;
+}
+
+#menu2 li {
+	float: left;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
+		"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	padding: 5px 6px 3px 5px;
+	border-right: 1px solid grey;
+}
+
+.break {
+	clear: both;
+}
+
+.codecontainer {
+	height: 100%;
+	float: left;
+	width: 50%;
+	position: relative;
+}
+
+.codecontainer textarea {
+	height: 100%;
+	width: 100%;
+	border: none;
+	border-right: 1px solid grey;
+	font-family: monotype;
+	font-size: 90%;
+	padding: 5px 0 0 5px;
+	box-sizing: border-box;
+}
+
+.codelabel {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+#CSScontainer, #JScontainer {
+	display: none;
+}
+
+iframe {
+	height: 100%;
+	position: relative;
+	left: 20px;
+	border: none;
+}
+
+.selected {
+	background-color: grey;
+}
+</style>
+
+
+</head>
+<body>
+
+	<div id="wrapper">
+		<div id="menu1">
+			<div id="codeplayer">CodePlayer</div>
+
+			<div id="buttondiv">
+				<button id="button">RUN</button>
+			</div>
+
+			<ul id="menu2">
+				<li class="selected">HTML</li>
+				<li>CSS</li>
+				<li>JS</li>
+				<li class="selected">Results</li>
+			</ul>
+			<div class="break"></div>
+		</div>
+
+		<div id="HTMLcontainer" class="codecontainer">  
+			<div class="codelabel">HTML</div>
+			<textarea id="htmlcode">Example code !</textarea>
+		</div>
+		<div id="CSScontainer" class="codecontainer">
+			<div class="codelabel">CSS</div>
+			<textarea id="csscode">Example code !</textarea>
+		</div>
+		<div id="JScontainer" class="codecontainer">
+			<div class="codelabel">JS</div>
+			<textarea id="jscode">document.getElementById("test").innerHTML="its working";</textarea>
+		</div>
+		<div id="Resultscontainer" class="codecontainer">
+			<div class="codelabel">Results</div>
+			<iframe id="frame"></iframe>
+		</div>
+
+
+	</div>
+
+	<script type="text/javascript">
+	
+	
+	var windowheight=$(window).height();
+	var menubarheight=$("#menu1").height();
+	var codecontainerheight=windowheight-menubarheight;
+	$(".codecontainer").height(codecontainerheight);
+	$("li").click(function(){
+	$(this).toggleClass("selected");
+	var activediv=$(this).html();
+	$("#"+activediv+"container").toggle();
+	var showingdivs=$(".codecontainer").filter(function(){
+		return($(this).css("display")!="none");
+	}).length;
+	var width=100/showingdivs;
+	$(".codecontainer").width(width+"%");
+	
+	
+	});
+	
+	$("#button").click(function(){
+		
+		$("iframe").contents().find("html").html("<style>"+$("#csscode").val()+"</style>"+$("#htmlcode").val());
+		
+		eval($("#jscode").val());
+		
+		document.getElementById("#frame").contentWindow.eval($("#jscode").val());
+		
+	});
+	
+	
+	</script>
+
+</body>
+</html>
